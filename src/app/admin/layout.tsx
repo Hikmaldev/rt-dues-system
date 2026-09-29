@@ -59,7 +59,7 @@ export default function AdminLayout({
               Sistem Aktif
             </span>
             <span>·</span>
-            <span>Versi 1.0 (Next.js & Supabase)</span>
+            <span>Versi 1.0 · Neon Postgres</span>
           </div>
         </footer>
       </div>

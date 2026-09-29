@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import {
   Receipt,
   Search,
@@ -23,8 +24,11 @@ interface BillsClientProps {
 }
 
 export const BillsClient: React.FC<BillsClientProps> = ({ initialBills, blocks }) => {
+  const searchParams = useSearchParams();
   const [bills, setBills] = useState<Bill[]>(initialBills);
-  const [activeTab, setActiveTab] = useState<string>("all");
+  const [activeTab, setActiveTab] = useState<string>(
+    searchParams.get("status") || "all"
+  );
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedHouseStatus, setSelectedHouseStatus] = useState("all");
   const [selectedPeriod, setSelectedPeriod] = useState("September 2026");
