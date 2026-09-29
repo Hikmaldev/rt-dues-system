@@ -291,9 +291,7 @@
       "lucide-react"
     ],
     "serverExternalPackages": [
-      "@neondatabase/serverless",
-      "@supabase/ssr",
-      "@supabase/supabase-js"
+      "@neondatabase/serverless"
     ],
     "turbopack": {
       "root": "C:\\laragon\\www\\RT-Dues-System"

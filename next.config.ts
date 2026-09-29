@@ -5,8 +5,6 @@ const nextConfig: NextConfig = {
   transpilePackages: ["lucide-react"],
   serverExternalPackages: [
     "@neondatabase/serverless",
-    "@supabase/ssr",
-    "@supabase/supabase-js",
   ],
 };
 
