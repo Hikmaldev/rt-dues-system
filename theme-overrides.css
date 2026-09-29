@@ -1,0 +1,14 @@
+/* Palet alternatif: teal/emerald, dengan border card yang lebih tegas */
+:root{--brand:#0f766e;--brand-dark:#115e59;--brand-soft:#e4f5f2;--line:#d8e2e5}
+.brand-mark,.primary{background:var(--brand)}
+.brand strong span,.text-btn,.outline-btn,.quick-links strong{color:var(--brand)}
+nav a.active{background:var(--brand-soft);color:var(--brand)}
+nav a.active i{color:var(--brand)}
+nav em{background:#dff2ef;color:var(--brand)}
+.sidebar-help{background:#edf8f6}.help-icon{background:#d8efeb;color:var(--brand)}
+.sidebar-help a{color:var(--brand)}
+.stat-card{border-color:var(--line);box-shadow:0 2px 7px rgba(15,118,110,.045)}
+.payment-panel,.reminder-panel,.activity,.quick{border-color:#cfdcdf;box-shadow:0 3px 12px rgba(23,35,59,.035)}
+.blue-card{border-top:3px solid #4b8fca}.green-card{border-top:3px solid #27ae7b}.yellow-card{border-top:3px solid #dfa333}.purple-card{border-top:3px solid #876bd0}
+.blue-card .stat-icon{background:#e6f1f8;color:#3478ad}.blue-line{color:#4b8fca}.bar i{background:var(--brand)}
+.month-select{border-color:#cfdcdf}.outline-btn{border-color:#afd3ce}.top-avatar{background:var(--brand)}

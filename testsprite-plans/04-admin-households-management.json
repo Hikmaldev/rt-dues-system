@@ -1,0 +1,33 @@
+{
+  "projectId": "836d19fc-c02d-4dc8-b451-05883b983719",
+  "type": "frontend",
+  "name": "Admin creates a new household entry",
+  "description": "An RT administrator adds a new household to the master directory and verifies it appears in the table.",
+  "priority": "p1",
+  "planSteps": [
+    {
+      "type": "action",
+      "description": "Navigate to /admin/households"
+    },
+    {
+      "type": "action",
+      "description": "Click the 'Tambah Data Rumah' button to open the modal"
+    },
+    {
+      "type": "action",
+      "description": "Type 'D-18' into the house number input field"
+    },
+    {
+      "type": "action",
+      "description": "Type 'Bambang Trihatmodjo' into the head of family name input field"
+    },
+    {
+      "type": "action",
+      "description": "Submit the household form by clicking 'Simpan Data Warga'"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the household table displays 'Bambang Trihatmodjo' and house number 'D-18' with a generated access code"
+    }
+  ]
+}

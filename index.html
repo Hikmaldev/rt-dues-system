@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#2563eb" />
+  <title>RTHub — Dashboard Iuran Warga</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="theme-overrides.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><div class="brand-mark">R</div><div><strong>RT<span>Hub</span></strong><small>Sistem Iuran Warga</small></div></div>
+      <div class="workspace"><span class="avatar">AS</span><div><b>RT 05 / RW 02</b><small>Kelurahan Cempaka</small></div><button class="more">•••</button></div>
+      <nav>
+        <p class="nav-label">MENU UTAMA</p>
+        <a class="active" href="#dashboard"><i>▦</i> Dashboard</a>
+        <a href="#warga"><i>♙</i> Data Warga <em>128</em></a>
+        <a href="#tagihan"><i>▤</i> Tagihan</a>
+        <a href="#laporan"><i>◴</i> Laporan</a>
+        <p class="nav-label">LAINNYA</p>
+        <a href="#transparansi"><i>◈</i> Transparansi Dana</a>
+        <a href="#pengaturan"><i>⚙</i> Pengaturan</a>
+      </nav>
+      <div class="sidebar-help"><div class="help-icon">?</div><b>Butuh bantuan?</b><p>Pelajari cara menggunakan RTHub</p><a href="#panduan">Buka panduan <span>→</span></a></div>
+      <div class="profile"><span class="avatar blue">BS</span><div><b>Budi Santoso</b><small>Bendahara RT</small></div><button class="more">•••</button></div>
+    </aside>
+
+    <main class="main" id="dashboard">
+      <header class="topbar"><button class="menu-btn" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button><div class="breadcrumb">Dashboard <span>/</span> Ringkasan</div><div class="top-actions"><button class="icon-btn">⌕</button><button class="icon-btn notification">♢<i></i></button><div class="top-avatar">BS</div></div></header>
+      <div class="content">
+        <section class="welcome"><div><p class="eyebrow">RABU, 25 SEPTEMBER 2026</p><h1>Selamat pagi, Budi <span>👋</span></h1><p>Berikut ringkasan iuran warga bulan ini.</p></div><button class="primary"><span>＋</span> Catat Pembayaran</button></section>
+        <div class="month-row"><div class="month-select">September 2026 <span>⌄</span></div><span class="updated">● Diperbarui 5 menit lalu</span></div>
+
+        <section class="stats-grid">
+          <article class="stat-card blue-card"><div class="stat-head"><span>Total Terkumpul</span><b class="stat-icon">↗</b></div><strong>Rp 9.600.000</strong><div class="stat-foot"><span class="positive">↑ 8,2%</span> dari bulan lalu</div><div class="sparkline blue-line">╱╲__╱╲╱╲___╱╲</div></article>
+          <article class="stat-card green-card"><div class="stat-head"><span>Sudah Lunas</span><b class="stat-icon">✓</b></div><strong>96 <small>/ 128 rumah</small></strong><div class="stat-foot"><span class="positive">75%</span> tingkat pembayaran</div><div class="progress"><i style="width:75%"></i></div></article>
+          <article class="stat-card yellow-card"><div class="stat-head"><span>Belum Bayar</span><b class="stat-icon">!</b></div><strong>32 <small>rumah</small></strong><div class="stat-foot"><span class="warning">Perlu ditindaklanjuti</span></div><div class="mini-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="stat-card purple-card"><div class="stat-head"><span>Total Rumah Aktif</span><b class="stat-icon">⌂</b></div><strong>128 <small>rumah</small></strong><div class="stat-foot"><span class="purple-text">4 blok</span> terdaftar aktif</div><div class="blocks"><b>A</b><b>B</b><b>C</b><b>D</b></div></article>
+        </section>
+
+        <section class="dashboard-grid">
+          <article class="panel payment-panel"><div class="panel-title"><div><h2>Status Pembayaran</h2><p>Ringkasan pembayaran per blok</p></div><button class="text-btn">Lihat detail →</button></div><div class="chart-area"><div class="donut"><div><strong>75%</strong><small>Lunas</small></div></div><div class="legend"><div><i class="dot green"></i><span>Lunas</span><b>96 rumah</b></div><div><i class="dot red"></i><span>Belum bayar</span><b>24 rumah</b></div><div><i class="dot orange"></i><span>Sebagian</span><b>8 rumah</b></div></div></div><div class="block-list"><div class="block-row"><span><b>Blok A</b><small>32 rumah</small></span><div class="bar"><i style="width:87%"></i></div><strong>28 <small>/ 32</small></strong><em>87%</em></div><div class="block-row"><span><b>Blok B</b><small>36 rumah</small></span><div class="bar"><i style="width:78%"></i></div><strong>28 <small>/ 36</small></strong><em>78%</em></div><div class="block-row"><span><b>Blok C</b><small>30 rumah</small></span><div class="bar"><i style="width:70%"></i></div><strong>21 <small>/ 30</small></strong><em>70%</em></div><div class="block-row"><span><b>Blok D</b><small>30 rumah</small></span><div class="bar"><i style="width:63%"></i></div><strong>19 <small>/ 30</small></strong><em>63%</em></div></div></article>
+          <article class="panel reminder-panel"><div class="panel-title"><div><h2>Perlu Perhatian</h2><p>Warga yang belum membayar</p></div><span class="count-badge">32</span></div><div class="resident-list"><div class="resident"><span class="resident-avatar coral">RN</span><div><b>Rudi Hartono</b><small>Blok B-12 · 2 bulan tertunggak</small></div><button>•••</button></div><div class="resident"><span class="resident-avatar orange">SW</span><div><b>Siti Wahyuni</b><small>Blok C-08 · 1 bulan tertunggak</small></div><button>•••</button></div><div class="resident"><span class="resident-avatar purple">AF</span><div><b>Andi Firmansyah</b><small>Blok D-04 · 1 bulan tertunggak</small></div><button>•••</button></div><div class="resident"><span class="resident-avatar teal">DL</span><div><b>Dewi Lestari</b><small>Blok A-19 · 1 bulan tertunggak</small></div><button>•••</button></div></div><button class="outline-btn">Lihat semua warga <span>→</span></button></article>
+        </section>
+
+        <section class="bottom-grid"><article class="panel activity"><div class="panel-title"><div><h2>Aktivitas Terbaru</h2><p>Pembaruan pembayaran hari ini</p></div><button class="text-btn">Lihat semua →</button></div><div class="activity-row"><span class="activity-icon green-bg">✓</span><div><b>Pak Joko Pranoto</b><small>Blok A-07 · Pembayaran iuran September</small></div><strong>+ Rp 75.000 <small>09:42</small></strong></div><div class="activity-row"><span class="activity-icon blue-bg">↗</span><div><b>Ibu Lina Marlina</b><small>Blok C-15 · Pembayaran iuran September</small></div><strong>+ Rp 75.000 <small>08:18</small></strong></div><div class="activity-row"><span class="activity-icon orange-bg">↻</span><div><b>Pak Dedi Setiawan</b><small>Blok B-03 · Pembayaran sebagian</small></div><strong>+ Rp 50.000 <small>Senin</small></strong></div></article><article class="panel quick"><h2>Akses Cepat</h2><p>Kelola sistem iuran RT Anda</p><div class="quick-links"><a href="#warga"><span class="quick-icon blue-bg">♙</span><b>Data Warga</b><small>Kelola rumah & kontak</small><strong>→</strong></a><a href="#tagihan"><span class="quick-icon green-bg">▤</span><b>Tagihan Bulanan</b><small>Buat & catat pembayaran</small><strong>→</strong></a><a href="#transparansi"><span class="quick-icon purple-bg">◈</span><b>Transparansi Dana</b><small>Catat penggunaan dana</small><strong>→</strong></a></div></article></section>
+        <footer><span>© 2026 RTHub</span><span>Data tersimpan dengan aman · Bantuan</span></footer>
+      </div>
+    </main>
+  </div>
+  <script>document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{if(a.getAttribute('href')==='#')e.preventDefault()}));</script>
+</body>
+</html>

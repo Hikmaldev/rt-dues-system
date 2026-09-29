@@ -1,0 +1,29 @@
+{
+  "projectId": "836d19fc-c02d-4dc8-b451-05883b983719",
+  "type": "frontend",
+  "name": "Admin authentication and dashboard redirect",
+  "description": "An RT administrator logs in with valid credentials and is redirected to the dashboard.",
+  "priority": "p0",
+  "planSteps": [
+    {
+      "type": "action",
+      "description": "Navigate to /admin/login"
+    },
+    {
+      "type": "action",
+      "description": "Type 'admin@rt05.id' into the email input field"
+    },
+    {
+      "type": "action",
+      "description": "Type 'password123' into the password input field"
+    },
+    {
+      "type": "action",
+      "description": "Click the submit button to log in"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the page redirects to the dashboard showing 'Selamat datang, Budi Santoso' and key summary metrics"
+    }
+  ]
+}

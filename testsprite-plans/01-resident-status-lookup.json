@@ -1,0 +1,25 @@
+{
+  "projectId": "836d19fc-c02d-4dc8-b451-05883b983719",
+  "type": "frontend",
+  "name": "Resident status lookup by access code",
+  "description": "A resident enters their access code to view their dues status and payment history.",
+  "priority": "p0",
+  "planSteps": [
+    {
+      "type": "action",
+      "description": "Navigate to /status"
+    },
+    {
+      "type": "action",
+      "description": "Type 'RH-A7-X8K2' into the access code input field"
+    },
+    {
+      "type": "action",
+      "description": "Click the button to open the resident status"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the page displays the resident name 'Keluarga Joko Pranoto', house number 'A-07', and status badge 'Lunas'"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "projectId": "836d19fc-c02d-4dc8-b451-05883b983719",
+  "type": "frontend",
+  "name": "Public RT fund transparency overview",
+  "description": "Residents and the public can view aggregated financial transparency reports without seeing private resident data.",
+  "priority": "p1",
+  "planSteps": [
+    {
+      "type": "action",
+      "description": "Navigate to /transparency"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the heading 'Laporan Terbuka Kas RT 05' is displayed"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the financial summary cards show 'Total Iuran Terkumpul', 'Total Pengeluaran Kas', and 'Saldo Kas Tersedia Saat Ini'"
+    }
+  ]
+}

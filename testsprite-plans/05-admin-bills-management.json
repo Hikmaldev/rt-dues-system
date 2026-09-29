@@ -1,0 +1,29 @@
+{
+  "projectId": "836d19fc-c02d-4dc8-b451-05883b983719",
+  "type": "frontend",
+  "name": "Admin records dues payment for a household bill",
+  "description": "An RT administrator filters unpaid bills and records a completed payment transaction.",
+  "priority": "p1",
+  "planSteps": [
+    {
+      "type": "action",
+      "description": "Navigate to /admin/bills"
+    },
+    {
+      "type": "action",
+      "description": "Click the 'Belum Bayar' tab filter to show unpaid bills"
+    },
+    {
+      "type": "action",
+      "description": "Click the first 'Update Bayar' button in the table"
+    },
+    {
+      "type": "action",
+      "description": "Click the 'Simpan Status' button to record the payment"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the payment recording modal closes and the bill list updates"
+    }
+  ]
+}
