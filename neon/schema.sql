@@ -1,7 +1,19 @@
 -- ==============================================================================
 -- RT Dues System (Sistem Iuran Warga RT) - Database Schema for Neon PostgreSQL
 -- Deployment: Vercel + Neon Console (neon.tech)
+--
+-- CATATAN KEAMANAN:
+-- 1. Skrip ini IDEMPOTEN (aman dijalankan ulang): semua tabel memakai
+--    IF NOT EXISTS dan semua seed memakai ON CONFLICT DO NOTHING.
+-- 2. Akun admin default 'budi.santoso@rt05.id' / 'password123' HANYA untuk demo.
+--    GANTI password-nya sebelum dipakai produksi (hash PBKDF2 di bawah
+--    menggunakan salt statis agar dapat diaudit oleh pengguna lain).
+-- 3. Seluruh skrip dibungkus transaksi (BEGIN/COMMIT) - jika ada satu
+--    statement gagal, SEMUA perubahan di-rollback sehingga tidak ada
+--    state parsial pada database.
 -- ==============================================================================
+
+BEGIN;
 
 -- 1. EXTENSIONS
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
@@ -106,9 +118,29 @@ CREATE INDEX IF NOT EXISTS idx_bills_status ON bills(status);
 CREATE INDEX IF NOT EXISTS idx_payments_bill ON payments(bill_id);
 CREATE INDEX IF NOT EXISTS idx_fund_usages_period ON fund_usages(period);
 
+-- 3.1 TRIGGER: Otomatis perbarui kolom updated_at saat baris di-update
+CREATE OR REPLACE FUNCTION set_updated_at()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = now();
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS trg_households_updated_at ON households;
+CREATE TRIGGER trg_households_updated_at
+BEFORE UPDATE ON households
+FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+
+DROP TRIGGER IF EXISTS trg_bills_updated_at ON bills;
+CREATE TRIGGER trg_bills_updated_at
+BEFORE UPDATE ON bills
+FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+
 -- 4. INITIAL SEED DATA (DATA AWAL SIAP PAKAI)
 
 -- 4.1 Admin Pengurus Default (Email: budi.santoso@rt05.id | Password: password123)
+-- !!! HANYA UNTUK DEMO. GANTI password di produksi !!!
 INSERT INTO admins (id, email, password, full_name, role)
 VALUES (
     'a0000000-0000-0000-0000-000000000001',
@@ -153,3 +185,5 @@ INSERT INTO fund_usages (id, period, category, amount, description, icon_type) V
     ('f0000000-0000-0000-0000-000000000003', 'September 2026', 'Penerangan Jalan & Fasilitas Umum', 1250000, 'Token listrik pos ronda, PJU gang, dan servis pompa air taman', 'zap'),
     ('f0000000-0000-0000-0000-000000000004', 'September 2026', 'Kegiatan Sosial & Warga', 850000, 'Santunan duka warga & konsumsi kerja bakti RT', 'users')
 ON CONFLICT (id) DO NOTHING;
+
+COMMIT;
