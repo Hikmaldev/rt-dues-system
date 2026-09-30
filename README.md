@@ -289,5 +289,5 @@ Contributions are welcome! Feel free to open an *issue* or *pull request* for bu
 ---
 
 <p align="center">
-  Built with ❤️ for the residents of RT 05 / RW 02, Cempaka
+  Built with ❤️ for the residents
 </p>
