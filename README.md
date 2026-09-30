@@ -1,4 +1,4 @@
-# 🏘️ RTHub — Sistem Iuran Warga RT Digital
+# 🏘️ RTHub — Digital RT Neighborhood Dues Management System
 
 ![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?logo=typescript&logoColor=white)
@@ -7,90 +7,90 @@
 ![Vercel](https://img.shields.io/badge/Vercel-Deployed-000?logo=vercel)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-**RTHub** adalah aplikasi web full-stack untuk mengelola iuran bulanan warga RT secara digital, transparan, dan mandiri. Dibangun dengan **Next.js 15 App Router**, **Neon Serverless Postgres**, dan di-deploy ke **Vercel**.
+**RTHub** is a full-stack web application that helps neighborhood associations (RT) manage monthly household dues digitally, transparently, and independently. Built with **Next.js 15 App Router**, **Neon Serverless Postgres**, and deployed on **Vercel**.
 
-> *"Cek Status Iuran Rumah — Mudah, Terbuka, & Mandiri"*
-
----
-
-## ✨ Fitur Utama
-
-### 🏠 Portal Warga (Publik)
-- **Cek status iuran** hanya dengan kode akses rumah (misal: `RH-A7-X8K2`)
-- Tampilan tagihan bulan berjalan dengan status pembayaran (✅ Lunas / ⏳ Sebagian / ❌ Belum Bayar)
-- Riwayat pembayaran 4 bulan terakhir
-- Informasi rekening transfer dengan tombol salin nomor rekening
-- **Privasi terjaga** — hanya menampilkan data rumah pemilik kode akses
-
-### 📊 Transparansi Kas RT (Publik)
-- Laporan terbuka keuangan kas RT tanpa data pribadi warga
-- Rincian pengeluaran per kategori (Keamanan, Kebersihan, Penerangan, Sosial)
-- Grafik tren penerimaan iuran 6 bulan terakhir
-- Statistik kepatuhan pembayaran dan saldo kas tersedia
-
-### 🔐 Panel Admin (Khusus Pengurus RT)
-- **Dashboard** — Ringkasan metrik bulan berjalan: total terkumpul, rumah lunas/belum bayar, donut chart pembayaran, daftar warga perlu ditindaklanjuti
-- **Data Warga** — CRUD master data rumah, generate kode akses otomatis, toggle status berpenghuni/kosong
-- **Tagihan Bulanan** — Generate tagihan massal, catat pembayaran (tunai/transfer), filter per status dan tipe rumah
-- **Penggunaan Dana** — Catat pengeluaran kas RT, otomatis tampil di halaman transparansi publik
-- **Laporan & Rekap** — Filter per periode/status, preview tabel, ekspor CSV (Excel) dan cetak PDF
+> *"Check Your Dues Status — Easy, Transparent & Self-Service"*
 
 ---
 
-## 💰 Sistem Tarif Iuran
+## ✨ Key Features
 
-| Status Rumah | Tarif / Bulan | Badge |
+### 🏠 Resident Portal (Public)
+- **Check dues status** with just a household access code (e.g., `RH-A7-X8K2`)
+- Current month's bill with payment status (✅ Paid / ⏳ Partial / ❌ Unpaid)
+- 4-month payment history
+- Bank transfer details with one-click copy button
+- **Privacy-first** — only shows data for the household that owns the access code
+
+### 📊 Fund Transparency (Public)
+- Open report of the RT's treasury with no resident personal data
+- Expense breakdown by category (Security, Sanitation, Lighting, Social)
+- 6-month collection trend chart
+- Payment compliance stats and available balance
+
+### 🔐 Admin Panel (RT Officials Only)
+- **Dashboard** — Monthly metrics: total collected, paid/unpaid houses, payment donut chart, residents needing follow-up
+- **Households** — Master data CRUD, auto-generated access codes, occupied/vacant toggle
+- **Monthly Bills** — Bulk bill generation, payment recording (cash/transfer), filter by status & house type
+- **Fund Usage** — Record RT expenses, automatically published to the public transparency page
+- **Reports & Recap** — Filter by period/status, table preview, CSV (Excel) export and PDF print
+
+---
+
+## 💰 Dues Rate System
+
+| House Status | Rate / Month | Badge |
 |:---:|:---:|:---:|
-| 🏡 Rumah Tetap / Milik | Rp 10.000 | 🔵 Biru |
-| 🏠 Rumah Kontrakan / Sewa | Rp 5.000 | 🟡 Amber |
+| 🏡 Permanent / Owned House | Rp 10,000 | 🔵 Blue |
+| 🏠 Rental House | Rp 5,000 | 🟡 Amber |
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Layer | Teknologi |
+| Layer | Technology |
 |---|---|
 | **Framework** | [Next.js 15](https://nextjs.org/) (App Router, Server Components, Server Actions) |
-| **Bahasa** | [TypeScript](https://www.typescriptlang.org/) 5.7 |
+| **Language** | [TypeScript](https://www.typescriptlang.org/) 5.7 |
 | **UI** | [React 19](https://react.dev/) + [Tailwind CSS v4](https://tailwindcss.com/) |
 | **Icons** | [Lucide React](https://lucide.dev/) |
 | **Database** | [Neon Serverless Postgres](https://neon.tech/) (`@neondatabase/serverless`) |
-| **Validasi** | [Zod](https://zod.dev/) |
-| **Autentikasi** | Custom session-based (HMAC SHA-256 cookie + PBKDF2 password hash) |
+| **Validation** | [Zod](https://zod.dev/) |
+| **Authentication** | Custom session-based (HMAC SHA-256 cookie + PBKDF2 password hash) |
 | **Hosting** | [Vercel](https://vercel.com/) |
 | **CSS Utils** | `clsx` + `tailwind-merge` |
 
 ---
 
-## 🗂️ Struktur Proyek
+## 🗂️ Project Structure
 
 ```
 RT-Dues-System/
 ├── neon/
-│   └── schema.sql              # DDL + seed data untuk Neon Postgres
+│   └── schema.sql              # DDL + seed data for Neon Postgres
 ├── scripts/
-│   └── migrate-neon.mjs        # Script migrasi database
+│   └── migrate-neon.mjs        # Database migration script
 ├── src/
 │   ├── app/
-│   │   ├── page.tsx            # Landing page / beranda
-│   │   ├── status/             # Portal cek iuran warga
-│   │   ├── transparency/       # Transparansi kas publik
+│   │   ├── page.tsx            # Landing / home page
+│   │   ├── status/             # Resident dues lookup portal
+│   │   ├── transparency/       # Public fund transparency
 │   │   ├── admin/
-│   │   │   ├── login/          # Halaman login pengurus
-│   │   │   ├── dashboard/      # Dashboard admin
-│   │   │   ├── households/     # Manajemen data warga
-│   │   │   ├── bills/          # Tagihan bulanan
-│   │   │   ├── fund-usage/     # Penggunaan dana
-│   │   │   └── reports/        # Laporan & ekspor
+│   │   │   ├── login/          # Admin login page
+│   │   │   ├── dashboard/      # Admin dashboard
+│   │   │   ├── households/     # Household management
+│   │   │   ├── bills/          # Monthly bills
+│   │   │   ├── fund-usage/     # Fund usage
+│   │   │   └── reports/        # Reports & export
 │   │   └── api/                # REST API endpoints
-│   ├── components/             # Client components (UI interaktif)
+│   ├── components/             # Interactive client components
 │   ├── actions/                # Next.js Server Actions
 │   ├── lib/
-│   │   ├── auth/               # Autentikasi & session management
-│   │   ├── db/                 # Koneksi Neon Postgres
+│   │   ├── auth/               # Authentication & session management
+│   │   ├── db/                 # Neon Postgres connection
 │   │   ├── services/           # Business logic layer
 │   │   ├── validations/        # Zod schemas
-│   │   └── mockData.ts         # Data demo (fallback tanpa database)
+│   │   └── mockData.ts         # Demo data (fallback without database)
 │   └── types/                  # TypeScript interfaces
 ├── neon.ts                     # Neon deployment config
 ├── next.config.ts              # Next.js config
@@ -99,23 +99,23 @@ RT-Dues-System/
 
 ---
 
-## 🚀 Cara Menjalankan
+## 🚀 Getting Started
 
-### Prasyarat
-- [Node.js](https://nodejs.org/) v18+ (disarankan v20+)
-- Akun [Neon](https://neon.tech/) (gratis) — *opsional untuk development lokal*
+### Prerequisites
+- [Node.js](https://nodejs.org/) v18+ (v20+ recommended)
+- A [Neon](https://neon.tech/) account (free) — *optional for local development*
 
 ### 1. Clone & Install
 
 ```bash
-git clone https://github.com/<username>/rt-dues-system.git
+git clone https://github.com/Hikmaldev/rt-dues-system.git
 cd rt-dues-system
 npm install
 ```
 
 ### 2. Setup Environment Variables
 
-Salin file contoh lalu sesuaikan isinya:
+Copy the example file and adjust its contents:
 
 ```bash
 cp .env.example .env.local
@@ -124,105 +124,105 @@ cp .env.example .env.local
 Edit `.env.local`:
 
 ```env
-# Neon Database URL (dapatkan dari neon.tech → Dashboard → Connection Details)
+# Neon Database URL (get it from neon.tech → Dashboard → Connection Details)
 DATABASE_URL=postgresql://user:password@ep-xxx.aws.neon.tech/dbname?sslmode=require
 
-# Secret key untuk token sesi admin (buat string acak)
-AUTH_SECRET=buat-kunci-rahasia-minimal-32-karakter
+# Secret key for admin session tokens (use a random string)
+AUTH_SECRET=your-random-secret-key-min-32-chars
 ```
 
-> **💡 Tanpa database?** Tidak masalah! Aplikasi otomatis menggunakan data demo in-memory sehingga bisa langsung dijalankan tanpa konfigurasi database.
+> **💡 No database?** No problem! The app falls back to in-memory demo data, so you can run it immediately without any database configuration.
 
-### 3. Setup Database (Opsional)
+### 3. Setup Database (Optional)
 
-Jika sudah memiliki Neon database, jalankan migrasi schema:
+If you already have a Neon database, apply the schema:
 
 ```bash
 node scripts/migrate-neon.mjs
 ```
 
-Script ini akan membuat seluruh tabel dan mengisi data awal contoh.
+This creates all tables and seeds the initial demo data.
 
-### 4. Jalankan Development Server
+### 4. Run the Development Server
 
 ```bash
 npm run dev
 ```
 
-Buka [http://localhost:3000](http://localhost:3000) di browser.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## 🌐 Deploy ke Vercel + Neon
+## 🌐 Deploy to Vercel + Neon
 
-### Langkah 1: Buat Database di Neon
-1. Daftar/login di [neon.tech](https://neon.tech)
-2. Buat project baru → pilih region terdekat (Singapore `ap-southeast-1` untuk Indonesia)
-3. Salin **Connection String** dari halaman Connection Details
+### Step 1: Create a Database on Neon
+1. Sign up / log in at [neon.tech](https://neon.tech)
+2. Create a new project → pick the closest region (e.g., Singapore `ap-southeast-1` for Indonesia)
+3. Copy the **Connection String** from the Connection Details page
 
-### Langkah 2: Jalankan Schema SQL
-1. Buka **SQL Editor** di dashboard Neon
-2. Salin dan paste seluruh isi file `neon/schema.sql`
-3. Klik **Run** — tabel dan data awal akan terbentuk
+### Step 2: Run the SQL Schema
+1. Open the **SQL Editor** in the Neon dashboard
+2. Copy and paste the entire contents of `neon/schema.sql`
+3. Click **Run** — tables and seed data are created
 
-### Langkah 3: Deploy ke Vercel
-1. Push kode ke GitHub
-2. Buka [vercel.com](https://vercel.com) → Import repositori
-3. Tambahkan **Environment Variables**:
+### Step 3: Deploy to Vercel
+1. Push your code to GitHub
+2. Go to [vercel.com](https://vercel.com) → Import the repository
+3. Add the **Environment Variables**:
 
    | Key | Value |
    |---|---|
-   | `DATABASE_URL` | Connection string dari Neon |
-   | `AUTH_SECRET` | String acak minimal 32 karakter |
+   | `DATABASE_URL` | Your Neon connection string |
+   | `AUTH_SECRET` | Random string of at least 32 characters |
 
-4. Klik **Deploy** — selesai! 🎉
+4. Click **Deploy** — done! 🎉
 
 ---
 
-## 🔑 Akun Demo
+## 🔑 Demo Account
 
-Setelah menjalankan `neon/schema.sql`, akun admin berikut siap digunakan:
+After running `neon/schema.sql`, these admin credentials are ready to use:
 
-| Field | Nilai |
+| Field | Value |
 |---|---|
 | Email | `budi.santoso@rt05.id` |
 | Password | `password123` |
-| Nama | Budi Santoso |
-| Role | Bendahara RT |
+| Name | Budi Santoso |
+| Role | Treasurer |
 
-Kode akses warga untuk demo:
+Demo resident access codes:
 
-| Kode Akses | Nama KK | Nomor Rumah | Status |
+| Access Code | Head of Family | House Number | Status |
 |---|---|---|---|
-| `RH-A7-X8K2` | Joko Pranoto | A-07 | Rumah Tetap |
-| `RH-C15-Q9L4` | Lina Marlina | C-15 | Kontrakan |
-| `RH-B3-M2P7` | Dedi Setiawan | B-03 | Kontrakan |
-| `RH-B12-K7N3` | Rudi Hartono | B-12 | Rumah Tetap |
-| `RH-C8-W4E9` | Siti Wahyuni | C-08 | Rumah Tetap |
-| `RH-D4-R1S5` | Andi Firmansyah | D-04 | Kontrakan |
+| `RH-A7-X8K2` | Joko Pranoto | A-07 | Permanent |
+| `RH-C15-Q9L4` | Lina Marlina | C-15 | Rental |
+| `RH-B3-M2P7` | Dedi Setiawan | B-03 | Rental |
+| `RH-B12-K7N3` | Rudi Hartono | B-12 | Permanent |
+| `RH-C8-W4E9` | Siti Wahyuni | C-08 | Permanent |
+| `RH-D4-R1S5` | Andi Firmansyah | D-04 | Rental |
 
 ---
 
 ## 📡 API Endpoints
 
-| Method | Endpoint | Deskripsi |
+| Method | Endpoint | Description |
 |---|---|---|
-| `POST` | `/api/auth/login` | Login admin (email + password) |
-| `POST` | `/api/auth/logout` | Logout admin (hapus sesi) |
-| `GET` | `/api/households` | Daftar data warga (filter: status, aktif, pencarian) |
-| `POST` | `/api/households` | Tambah data warga baru |
-| `PATCH` | `/api/households/[id]` | Toggle status berpenghuni/kosong |
-| `GET` | `/api/bills` | Daftar tagihan (filter: periode, status, tipe rumah) |
-| `POST` | `/api/bills/generate` | Generate tagihan bulanan massal |
-| `POST` | `/api/payments` | Catat pembayaran |
-| `GET` | `/api/resident/status` | Lookup status iuran warga (berdasarkan kode akses) |
-| `GET` | `/api/transparency` | Data transparansi kas RT (publik) |
-| `POST` | `/api/fund-usage` | Catat pengeluaran kas RT |
-| `GET` | `/api/reports/export` | Ekspor laporan CSV |
+| `POST` | `/api/auth/login` | Admin login (email + password) |
+| `POST` | `/api/auth/logout` | Admin logout (clear session) |
+| `GET` | `/api/households` | List households (filters: status, active, search) |
+| `POST` | `/api/households` | Create a new household |
+| `PATCH` | `/api/households/[id]` | Toggle occupied/vacant status |
+| `GET` | `/api/bills` | List bills (filters: period, status, house type) |
+| `POST` | `/api/bills/generate` | Bulk-generate monthly bills |
+| `POST` | `/api/payments` | Record a payment |
+| `GET` | `/api/resident/status` | Resident dues status lookup (by access code) |
+| `GET` | `/api/transparency` | RT fund transparency data (public) |
+| `POST` | `/api/fund-usage` | Record an RT expense |
+| `GET` | `/api/reports/export` | Export report as CSV |
 
 ---
 
-## 🏗️ Arsitektur
+## 🏗️ Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -255,39 +255,39 @@ Kode akses warga untuk demo:
               └───────────────────────┘
 ```
 
-**Dual-mode data**: Saat `DATABASE_URL` dikonfigurasi, semua operasi data langsung query ke Neon Postgres. Tanpa `DATABASE_URL`, aplikasi menggunakan in-memory store dengan data mock — memungkinkan development tanpa database.
+**Dual-mode data**: When `DATABASE_URL` is configured, all data operations query Neon Postgres directly. Without `DATABASE_URL`, the app uses an in-memory store seeded with mock data — enabling development with zero setup.
 
 ---
 
-## 🔒 Keamanan
+## 🔒 Security
 
-- **Autentikasi Admin**: Session token ditandatangani menggunakan HMAC SHA-256 dan disimpan dalam HTTP-only cookie (tidak dapat diakses dari JavaScript client-side)
-- **Password Hashing**: PBKDF2 dengan SHA-512 dan salt acak 16-byte
-- **Privasi Warga**: Halaman status iuran hanya menampilkan data rumah sesuai kode akses (strict household-level isolation)
-- **Transparansi Publik**: Halaman transparansi hanya menampilkan data agregat tanpa identitas pribadi warga
-- **Validasi Input**: Semua input divalidasi menggunakan Zod schema di sisi server
-- **Middleware Guard**: Route `/admin/*` dilindungi oleh Next.js middleware yang memeriksa keberadaan session cookie
-
----
-
-## 📜 Lisensi
-
-Proyek ini dilisensikan di bawah [MIT License](LICENSE).
+- **Admin Authentication**: Session tokens are signed with HMAC SHA-256 and stored in HTTP-only cookies (inaccessible to client-side JavaScript)
+- **Password Hashing**: PBKDF2 with SHA-512 and a random 16-byte salt
+- **Resident Privacy**: The dues status page only shows data for the household matching the access code (strict household-level isolation)
+- **Public Transparency**: The transparency page only shows aggregate data, never resident personal identities
+- **Input Validation**: All inputs are validated with Zod schemas on the server side
+- **Middleware Guard**: `/admin/*` routes are protected by Next.js middleware that checks for a valid session cookie
 
 ---
 
-## 🤝 Kontribusi
+## 📜 License
 
-Kontribusi sangat diterima! Silakan buat *issue* atau *pull request* untuk perbaikan bug, fitur baru, atau peningkatan dokumentasi.
+This project is licensed under the [MIT License](LICENSE).
 
-1. Fork repositori ini
-2. Buat branch fitur baru (`git checkout -b fitur/nama-fitur`)
-3. Commit perubahan (`git commit -m 'Tambah fitur baru'`)
-4. Push ke branch (`git push origin fitur/nama-fitur`)
-5. Buat Pull Request
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to open an *issue* or *pull request* for bug fixes, new features, or documentation improvements.
+
+1. Fork this repository
+2. Create a feature branch (`git checkout -b feature/your-feature`)
+3. Commit your changes (`git commit -m 'Add new feature'`)
+4. Push to the branch (`git push origin feature/your-feature`)
+5. Open a Pull Request
 
 ---
 
 <p align="center">
-  Dibuat dengan ❤️ untuk warga RT 05 / RW 02, Kelurahan Cempaka
+  Built with ❤️ for the residents of RT 05 / RW 02, Cempaka
 </p>
